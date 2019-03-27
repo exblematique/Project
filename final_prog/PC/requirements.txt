@@ -1,0 +1,6 @@
+flask
+paho-mqtt
+numpy
+requests
+git+https://github.com/jrialland/python-astar.git
+websocket-server==0.4
