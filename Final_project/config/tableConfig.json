@@ -1,0 +1,88 @@
+{
+    "tableParts": [
+        {
+            "id": 1,
+            "startPosition": [
+                0,
+                0
+            ],
+          "type": 2,
+          "neighbours": {
+            "north": null,
+            "east": 2,
+            "south": null,
+            "west": null
+          }
+        },
+        {
+            "id": 2,
+            "startPosition": [
+              4,
+              0
+            ],
+          "type": 1,
+          "neighbours": {
+            "north": null,
+            "east": 4,
+            "south": 3,
+            "west": 1
+          }
+        },
+        {
+            "id": 3,
+            "startPosition": [
+              4,
+              4
+            ],
+          "type": 1,
+          "neighbours": {
+            "north": 2,
+            "east": 5,
+            "south": null,
+            "west": null
+          }
+        },
+        {
+            "id": 4,
+            "startPosition": [
+              9,
+              0
+            ],
+          "type": 1,
+          "neighbours": {
+            "north": null,
+            "east": null,
+            "south": 5,
+            "west": 2
+          }
+        },
+        {
+            "id": 5,
+            "startPosition": [
+              9,
+              4
+            ],
+          "type": 1,
+          "neighbours": {
+            "north": 4,
+            "east": null,
+            "south": 6,
+            "west": 3
+          }
+        },
+        {
+            "id": 6,
+            "startPosition": [
+              9,
+              8
+            ],
+          "type": 1,
+          "neighbours": {
+            "north": 5,
+            "east": null,
+            "south": null,
+            "west": null
+          }
+        }
+    ]
+}
