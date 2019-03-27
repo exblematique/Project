@@ -1,0 +1,788 @@
+{
+  "modules": [
+    {
+      "id": 3920381746,
+      "voltage": "high",
+      "name": "Nuclear Power Plant 2",
+      "configurations": [
+        {
+          "type": 9,
+          "value": "700"
+        }
+      ]
+    },
+    {
+      "id": 527238502,
+      "voltage": "high",
+      "name": "Gas Power Plant",
+      "configurations": [
+        {
+          "type": 9,
+          "value": "700"
+        }
+      ]
+    },
+    {
+      "id": 2310312452,
+      "voltage": "high",
+      "name": "Coal Power Plant ",
+      "configurations": [
+        {
+          "type": 9,
+          "value": "410.0"
+        }
+      ]
+    },
+    {
+      "id": 2309930275,
+      "voltage": "high",
+      "name": "Nulcear Power Plant",
+      "configurations": [
+        {
+          "type": 9,
+          "value": "700"
+        }
+      ]
+    },
+    {
+      "voltage": "high",
+      "id": 3846378531,
+      "name": "Hydro Power Plant",
+      "configurations": [
+        {
+          "type": 9,
+          "value": "450"
+        }
+      ]
+    },
+    {
+      "voltage": "high",
+      "id": 2310132932,
+      "name": "High Voltage Wind Turbine",
+      "configurations": [
+        {
+          "type": 4,
+          "value": "450.0"
+        }
+      ]
+    },
+    {
+      "voltage": "high",
+      "id": 698489018,
+      "name": "High Voltage Wind Turbine 2",
+      "configurations": [
+        {
+          "type": 4,
+          "value": "450.0"
+        }
+      ]
+    },
+    {
+      "voltage": "medium",
+      "id": 1508111141,
+      "name": "Medium Wind Turbine",
+      "configurations": [
+        {
+          "type": 5,
+          "value": "290.0"
+        }
+      ]
+    },
+    {
+      "voltage": "medium",
+      "id": 1506226421,
+      "name": "Medium Wind Turbine 2",
+      "configurations": [
+        {
+          "type": 5,
+          "value": "290.0"
+        }
+      ]
+    },
+    {
+      "id": 3846948323,
+      "voltage": "medium",
+      "name": "Solar Farm ",
+      "configurations": [
+        {
+          "type": 12,
+          "value": 200
+        }
+      ]
+    },
+    {
+      "id": 3920308211,
+      "voltage": "medium",
+      "name": "Solar Farm 2",
+      "configurations": [
+        {
+          "type": 12,
+          "value": 300
+        }
+      ]
+    },
+    {
+      "id": 3920341571,
+      "voltage": "medium",
+      "name": "Solar Farm 3",
+      "configurations": [
+        {
+          "type": 12,
+          "value": 300
+        }
+      ]
+    },
+    {
+      "id": 610974611,
+      "voltage": "medium",
+      "name": "Solar Farm 4",
+      "configurations": [
+        {
+          "type": 12,
+          "value": 300
+        }
+      ]
+    },
+    {
+      "id": 702894956,
+      "voltage": null,
+      "name": "Battery Storage",
+      "configurations": [
+        {
+          "type": 10,
+          "value": "151"
+        },
+        {
+          "type": 11,
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "id": 3920305397,
+      "voltage": null,
+      "name": "Battery Storage 1",
+      "configurations": [
+        {
+          "type": 10,
+          "value": "151"
+        },
+        {
+          "type": 11,
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "id": 2846345288,
+      "voltage": null,
+      "name": "Battery Storage 2",
+      "configurations": [
+        {
+          "type": 10,
+          "value": "0"
+        },
+        {
+          "type": 11,
+          "value": "100"
+        }
+      ]
+    },
+    {
+      "id": 301083890,
+      "voltage": null,
+      "name": "Grid Module 1",
+      "configurations": [
+        {
+          "type": 15,
+          "value": "10000"
+        }
+      ]
+    },
+    {
+      "id": 462736805,
+      "voltage": null,
+      "name": "Grid Module 2",
+      "configurations": [
+        {
+          "type": 15,
+          "value": "10000"
+        }
+      ]
+    },
+    {
+      "id": 3671765811,
+      "voltage": "medium",
+      "name": "Charge Station",
+      "configurations": [
+        {
+          "type": 10,
+          "value": "450"
+        }
+      ]
+    },
+    {
+      "id": 2310183573,
+      "voltage": "medium",
+      "name": "Charge Station 1",
+      "configurations": [
+        {
+          "type": 13,
+          "value": "200.0"
+        }
+      ]
+    },
+    {
+      "voltage": "medium",
+      "id": 3847006803,
+      "name": "Factory",
+      "configurations": [
+        {
+          "type": 7,
+          "value": "240.0"
+        }
+      ]
+    },
+    {
+      "voltage": "medium",
+      "id": 560550766,
+      "name": "Factory 2",
+      "configurations": [
+        {
+          "type": 7,
+          "value": "440.0"
+        }
+      ]
+    },
+    {
+      "voltage": "medium",
+      "id": 4051964182,
+      "name": "Factory 3",
+      "configurations": [
+        {
+          "type": 7,
+          "value": "440.0"
+        }
+      ]
+    },
+    {
+      "voltage": "medium",
+      "id": 438168512,
+      "name": "Lean Station",
+      "configurations": [
+        {
+          "type": 7,
+          "value": "240.0"
+        }
+      ]
+    },
+    {
+      "voltage": "low",
+      "id": 2309849586,
+      "name": "Small Wind Turbine ",
+      "configurations": [
+        {
+          "type": 6,
+          "value": "50.0"
+        }
+      ]
+    },
+    {
+      "voltage": "low",
+      "id": 4052080214,
+      "name": "Residential Area",
+      "configurations": [
+        {
+          "type": 14,
+          "value": "100.0"
+        },
+        {
+          "type": 1,
+          "value": "40.0"
+        },
+        {
+          "type": 3,
+          "value": "10.0"
+        }
+      ]
+    },
+    {
+      "voltage": "low",
+      "id": 520894822,
+      "name": "Residential Area 2",
+      "configurations": [
+        {
+          "type": 14,
+          "value": "100.0"
+        },
+        {
+          "type": 1,
+          "value": "40.0"
+        },
+        {
+          "type": 3,
+          "value": "10.0"
+        }
+      ]
+    },
+    {
+      "voltage": "low",
+      "id": 75837095,
+      "name": "Residential Area 3",
+      "configurations": [
+        {
+          "type": 14,
+          "value": "100.0"
+        },
+        {
+          "type": 1,
+          "value": "40.0"
+        },
+        {
+          "type": 3,
+          "value": "10.0"
+        }
+      ]
+    },
+    {
+      "voltage": "low",
+      "id": 3920341176,
+      "name": "Apartment",
+      "configurations": [
+        {
+          "type": 1,
+          "value": "50.0"
+        },
+        {
+          "type": 2,
+          "value": "40.0"
+        },
+        {
+          "type": 3,
+          "value": "0.0"
+        }
+      ]
+    },
+    {
+      "voltage": "low",
+      "id": 3846246323,
+      "name": "Apartment 1",
+      "configurations": [
+        {
+          "type": 1,
+          "value": "50"
+        },
+        {
+          "type": 2,
+          "value": "40"
+        },
+        {
+          "type": 3,
+          "value": "10"
+        }
+      ]
+    },
+    {
+      "voltage": "low",
+      "id": 4025224262,
+      "name": "Apartment 2",
+      "configurations": [
+        {
+          "type": 1,
+          "value": "50"
+        },
+        {
+          "type": 2,
+          "value": "40"
+        },
+        {
+          "type": 3,
+          "value": "10"
+        }
+      ]
+    },
+    {
+      "voltage": "low",
+      "id": 618387075,
+      "name": "Apartment 3",
+      "configurations": [
+        {
+          "type": 1,
+          "value": "50"
+        },
+        {
+          "type": 2,
+          "value": "40"
+        },
+        {
+          "type": 3,
+          "value": "10"
+        }
+      ]
+    },
+    {
+      "voltage": "low",
+      "id": 72823031,
+      "name": "Apartment 4",
+      "configurations": [
+        {
+          "type": 1,
+          "value": "50"
+        },
+        {
+          "type": 2,
+          "value": "40"
+        },
+        {
+          "type": 3,
+          "value": "10"
+        }
+      ]
+    },
+    {
+      "voltage": "low",
+      "id": 4022527942,
+      "name": "House ",
+      "configurations": [
+        {
+          "type": 1,
+          "value": "30.0"
+        },
+        {
+          "type": 2,
+          "value": "40.0"
+        },
+        {
+          "type": 3,
+          "value": "15.0"
+        }
+      ]
+    },
+    {
+      "voltage": "low",
+      "id": 644498192,
+      "name": "House 1",
+      "configurations": [
+        {
+          "type": 1,
+          "value": "30.0"
+        },
+        {
+          "type": 2,
+          "value": "40.0"
+        },
+        {
+          "type": 3,
+          "value": "15.0"
+        }
+      ]
+    },
+    {
+      "voltage": "low",
+      "id": 2310254414,
+      "name": "Shopping Center",
+      "configurations": [
+        {
+          "type": 1,
+          "value": 20
+        },
+        {
+          "type": 2,
+          "value": 20
+        },
+        {
+          "type": 3,
+          "value": 50
+        }
+      ]
+    },
+    {
+      "voltage": "low",
+      "id": 618846083,
+      "name": "School",
+      "configurations": [
+        {
+          "type": 1,
+          "value": "30.0"
+        },
+        {
+          "type": 2,
+          "value": "90.0"
+        },
+        {
+          "type": 3,
+          "value": "20.0"
+        }
+      ]
+    },
+    {
+      "voltage": "low",
+      "id": 605966739,
+      "name": "School 1",
+      "configurations": [
+        {
+          "type": 1,
+          "value": "30.0"
+        },
+        {
+          "type": 2,
+          "value": "90.0"
+        },
+        {
+          "type": 3,
+          "value": "20.0"
+        }
+      ]
+    },
+    {
+      "voltage": "low",
+      "id": 75773047,
+      "name": "School 2",
+      "configurations": [
+        {
+          "type": 1,
+          "value": "30.0"
+        },
+        {
+          "type": 2,
+          "value": "90.0"
+        },
+        {
+          "type": 3,
+          "value": "20.0"
+        }
+      ]
+    },
+    {
+      "id": 4024653174,
+      "voltage": "low",
+      "name": "Hospital 2",
+      "configurations": [
+        {
+          "type": 1,
+          "value": "30.0"
+        },
+        {
+          "type": 2,
+          "value": "40.0"
+        },
+        {
+          "type": 3,
+          "value": "15.0"
+        }
+      ]
+    },
+    {
+      "id": 536179654,
+      "voltage": "low",
+      "name": "Hospital",
+      "configurations": [
+        {
+          "type": 1,
+          "value": "30.0"
+        },
+        {
+          "type": 2,
+          "value": "40.0"
+        },
+        {
+          "type": 3,
+          "value": "15.0"
+        }
+      ]
+    }
+  ],
+  "importModules": [
+    {
+      "voltage": "high",
+      "id": 76434871,
+      "name": "Import Export"
+    }
+  ],
+  "transformers": [
+    {
+      "linked": 3920387682,
+      "voltage": "low",
+      "name": "Transformer LV-MV: Low",
+      "id": 462736806
+    },
+    {
+      "linked": 462736806,
+      "voltage": "medium",
+      "name": "Transformer LV-MV: Medium",
+      "id": 3920387682
+    },
+    {
+      "linked": 71550919,
+      "voltage": "low",
+      "name": "Transformer LV-MV: Low",
+      "id": 4050910822
+    },
+    {
+      "linked": 4050910822,
+      "voltage": "medium",
+      "name": "Transformer LV-MV: Medium",
+      "id": 71550919
+    },
+    {
+      "linked": 434021877,
+      "voltage": "high",
+      "name": "Transformer HV-MV: High",
+      "id": 301083891
+    },
+    {
+      "linked": 301083891,
+      "voltage": "medium",
+      "name": "Transformer HV-MV: Medium",
+      "id": 434021877
+    }
+  ],
+  "wireModules": [
+    {
+      "linked": 1946406912,
+      "voltage": "low",
+      "name": "Low Voltage Wire",
+      "id": 1946402208
+    },
+    {
+      "linked": 1946402208,
+      "voltage": "low",
+      "name": "Low Voltage Wire",
+      "id": 1946406912
+    },
+    {
+      "linked": 443579467,
+      "voltage": "low",
+      "name": "Low Voltage Wire",
+      "id": 1946157904
+    },
+    {
+      "linked": 1946157904,
+      "voltage": "low",
+      "name": "Low Voltage Wire",
+      "id": 443579467
+    }
+  ],
+  "configTypes": [
+    {
+      "name": "Electric Car",
+      "min": 0,
+      "max": 50,
+      "role": "consumption",
+      "voltage": "low",
+      "id": 1
+    },
+    {
+      "name": "Household Machinery",
+      "min": 0,
+      "max": 100,
+      "role": "consumption",
+      "voltage": "low",
+      "id": 2
+    },
+    {
+      "name": "Solar Panel",
+      "min": 0,
+      "max": 30,
+      "role": "production",
+      "voltage": "low",
+      "id": 3
+    },
+    {
+      "name": "Wind Turbine",
+      "min": 0,
+      "max": 1000,
+      "role": "production",
+      "voltage": "high",
+      "id": 4
+    },
+    {
+      "name": "Wind Turbine",
+      "min": 0,
+      "max": 500,
+      "role": "production",
+      "voltage": "medium",
+      "id": 5
+    },
+    {
+      "name": "Wind Turbine",
+      "min": 0,
+      "max": 100,
+      "role": "production",
+      "voltage": "low",
+      "id": 6
+    },
+    {
+      "name": "Heavy Machinery",
+      "min": 0,
+      "max": 450,
+      "role": "consumption",
+      "voltage": "medium",
+      "id": 7
+    },
+    {
+      "name": "Solar Panel",
+      "min": 0,
+      "max": 1000,
+      "role": "production",
+      "voltage": "high",
+      "id": 8
+    },
+    {
+      "name": "Generator",
+      "min": 0,
+      "max": 1200,
+      "role": "production",
+      "voltage": "high",
+      "id": 9
+    },
+    {
+      "name": "Storage Input",
+      "min": 0,
+      "max": 400,
+      "role": "consumption",
+      "voltage": null,
+      "id": 10
+    },
+    {
+      "name": "Storage Output",
+      "min": 0,
+      "max": 400,
+      "role": "production",
+      "voltage": null,
+      "id": 11
+    },
+    {
+      "name": "Solar Panel",
+      "min": 0,
+      "max": 400,
+      "role": "production",
+      "voltage": "medium",
+      "id": 12
+    },
+    {
+      "name": "Charging Station",
+      "min": 0,
+      "max": 600,
+      "role": "consumption",
+      "voltage": "medium",
+      "id": 13
+    },
+    {
+      "name": "Residential Area",
+      "min": 0,
+      "max": 250,
+      "role": "consumption",
+      "voltage": "low",
+      "id": 14
+    },
+    {
+      "name": "Grid Module production",
+      "min": 0,
+      "max": 10000,
+      "role": "production",
+      "voltage": null,
+      "id": 15
+    }
+  ]
+}

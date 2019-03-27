@@ -1,0 +1,31 @@
+#import file_writer as fw
+
+#print fw.read_contents_from_file('moduleConfig.json')
+
+from module import *
+from settings import *
+
+a = load_module_info()
+print a
+# a[0] -> Nuclear Power Plant 2 (3920381746)
+
+#ID_tag = 123456789
+#while i < len(a):
+#   if 
+
+for i in a:
+    r = i.replace("(","")
+    w = r.replace(")","")
+    x = w.split(" ")
+    print x
+#change en str en non module 
+#for i in a:
+#    print i
+
+#i.split('(')
+#r = i.replace(")","")
+#w = r.replace("(","")
+#for i in range(len(a)):
+#    a[i] = a[i][:-1]
+#    a[i] = a[i].split("(")
+    
