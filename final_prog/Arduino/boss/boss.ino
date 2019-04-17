@@ -18,9 +18,11 @@
 #include "config.h"
 
 #include <MySensors.h>
-#include <SPI.h>
+//#include <SPI.h>
+//#include <Wire/Wire.h>
 #include <Wire.h>
-#include <Esp.h>
+
+
 
 
 #include "ledstrip.h"
@@ -43,8 +45,9 @@ void setup()
 {
   /* start I2C as slave */
   Wire.begin(SLAVE_ID);
-  Wire.onReceive(i2c_receive);
-
+  //Wire.onReceive((void (*)(int)) i2c_receive);
+  //Wire.receiveData(i2c_receive);
+  
   // start SPI for RFID readers and NRF24
   SPI.begin();
 

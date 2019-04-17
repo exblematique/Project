@@ -1,8 +1,11 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
-#include <Arduino.h>
-#include <Esp.h>
+#define FASTLED_INTERNAL
+//#define ENABLE_ARDUINO_DEPENDS 1
+#define CONFIG_AUTOSTART_ARDUINO 0
+//#include <Arduino.h>
+//#include <Esp.h>
 #include <FastLED.h>
 
 #include "rfid.h"
