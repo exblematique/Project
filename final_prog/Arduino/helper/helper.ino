@@ -63,7 +63,7 @@ void handle_RFID_message(const RFID_message *msg)
 
 	/* send RFID message to I2C slave */
 	Wire.beginTransmission(SLAVE_ID);
-	Wire.write((const char *)msg, sizeof *msg);
+	Wire.write((const uint8_t *)msg, sizeof *msg);
 
 	Wire.endTransmission();
 }

@@ -6,14 +6,14 @@
 /* Shared RFID reset pin */
 #define RFID_RST_PIN A0
 
-/* RFID data pins */
-#define RFID0_SDA_PIN 5
-#define RFID1_SDA_PIN 6
-#define RFID2_SDA_PIN 7
-#define RFID3_SDA_PIN 8
+// RFID data pins 
+#define RFID0_SDA_PIN 13
+#define RFID1_SDA_PIN 12
+#define RFID2_SDA_PIN 27
+#define RFID3_SDA_PIN 33
 
 /* Number of RFIDs on this Arduino */
-#define RFID_COUNT 4
+#define RFID_COUNT 2
 
 /* RFIDs on this Arduino */
 extern RFID RFIDs[];
