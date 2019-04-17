@@ -20,6 +20,8 @@
 #include <MySensors.h>
 #include <SPI.h>
 #include <Wire.h>
+#include <Esp.h>
+
 
 #include "ledstrip.h"
 #include "grid.h"
@@ -30,6 +32,7 @@
 
 // Buffer for RFID message received by I2C
 volatile RingBuffer RFID_msg_buf = ring_create();
+
 
 //present tablesection to maincontroller
 void presentation() {
@@ -46,7 +49,7 @@ void setup()
   SPI.begin();
 
   // initialize RFID readers 
-  for (size_t i = 0; i < RFID_COUNT; i++)²
+  for (size_t i = 0; i < RFID_COUNT; i++)
   {
     RFID_init(&RFIDs[i]);
   }
@@ -84,11 +87,12 @@ void loop()
   }
 
   // handle an RFID message received by I2C
-  if (ring_length(&RFID_msg_buf) > 0)
+  const RingBuffer *RFID_msg = (const RingBuffer*) &RFID_msg_buf;
+  if (ring_length(RFID_msg) > 0)
   {
     // Disable interrupts to get the RFID message from the buffer, then enable interrupts again.
     noInterrupts();
-    RFID_message RFID_msg = ring_pop(&RFID_msg_buf);
+    RFID_message RFID_msg = ring_pop((RingBuffer*) &RFID_msg_buf);
     interrupts();
 
     handle_RFID_message(&RFID_msg);
@@ -113,7 +117,7 @@ void receive(const MyMessage &msg)
   // Check if there is an update for the flow_segment configuration
   if (msg.type == FLOW_CONFIG_CHANGE_MSG)
   {
-    Grid grid = grid_from_parsed_grid(msg.getCustom());
+    Grid grid = grid_from_parsed_grid((const ParsedGrid*) msg.getCustom());
 
     ledstrip_set_grid(&grid);
 
@@ -234,13 +238,14 @@ void i2c_receive(int bytes)
   RFID_msg.sensor_id += RFID_COUNT;
 
   // Add message to the ring buffer
-  ring_push(&RFID_msg_buf, RFID_msg);
+  ring_push((RingBuffer*) &RFID_msg_buf, RFID_msg);
 } // End i2c_receive()
 
 void reboot_boss_and_helper() {
   Serial.println("rebooting system");
+  ESP.restart();
   //wait for it to reboot
 
   //reboot sketch on boss for soft reset
-  asm volatile ("  jmp 0");
+  //asm volatile ("  jmp 0");
 } 

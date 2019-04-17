@@ -1,4 +1,5 @@
-#include <Arduino.h>
+//#include <Arduino.h>
+#include <Esp.h>
 
 #include "grid.h"
 
@@ -7,7 +8,7 @@ Grid grid_from_parsed_grid(const ParsedGrid *parsed_grid)
 {
 	Grid grid;
 
-	grid.voltage = parsed_grid->voltage;
+	grid.voltage = (Voltage) parsed_grid->voltage;
 	for (size_t i = 0; i < FLOW_SEGMENT_COUNT; i++) {
 		grid.flow_segments[i] = flow_segment_from_parsed_flow_segment(&parsed_grid->flow_segments[i]);
 	}

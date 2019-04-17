@@ -7,4 +7,4 @@ void set_millis(uint32_t received_millis);
 //synchronizes received time from maincontroller with time on table section
 uint32_t synced_millis();
 
-#endif 
+#endif z

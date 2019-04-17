@@ -55,6 +55,7 @@ class SmartGridApp(object):
 
         # Create and start gateway connection (threaded)
         self.gateway_conn = GatewayConnector(self.add_message)
+        #start_daemon_thread(self.gateway_conn.start_serial_read, ())
         log('--------GW CONN STARTED')
 
         # Create and start flask server (threaded)

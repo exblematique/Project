@@ -1,4 +1,5 @@
-#include <Arduino.h>
+//#include <Arduino.h>
+#include <Esp.h>
 
 #include "synced-millis.h"
 
@@ -14,5 +15,3 @@ uint32_t synced_millis()
 {
 	return millis() + diff_millis;
 }
-
-

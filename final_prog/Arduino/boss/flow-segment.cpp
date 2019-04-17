@@ -1,4 +1,5 @@
-#include <Arduino.h>
+//#include <D:\Users\Documents\Arduino\hardware\espressif\esp32\cores\esp32\Arduino.h>
+#include <Esp.h>
 
 #include "flow-segment.h"
 
@@ -7,8 +8,8 @@ FlowSegment flow_segment_from_parsed_flow_segment(const ParsedFlowSegment *parse
 {
 	FlowSegment flow_segment;
 
-	flow_segment.state = parsed_flow_segment->state;
-	flow_segment.load = parsed_flow_segment->load;
+	flow_segment.state = (FlowSegmentState) parsed_flow_segment->state;
+	flow_segment.load = (Load) parsed_flow_segment->load;
 	flow_segment.speed = parsed_flow_segment->speed;
 	flow_segment.direction = parsed_flow_segment->direction;
 

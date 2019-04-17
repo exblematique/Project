@@ -192,6 +192,3 @@ bool ledstrip_test(bool testReady) {
     return true;
   }
 }
-
-
-

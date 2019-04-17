@@ -1,6 +1,8 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
+#include <Arduino.h>
+#include <Esp.h>
 #include <FastLED.h>
 
 #include "rfid.h"

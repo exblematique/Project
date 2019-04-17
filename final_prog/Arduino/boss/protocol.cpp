@@ -19,4 +19,3 @@ void change_neighbor(uint8_t side, uint32_t table_section_id)
 	msg.set(table_section_id);
 	send(msg);
 }
-
