@@ -78,8 +78,8 @@ class GatewayConnector(object):
     def send_serial_message(self, table_section_id, payload, command, type, child_id=0):
         topic = '{0}/{1}/{2}/0/{3}/{4}'.format(
             self.mqtt_topic_publish, table_section_id, child_id, command, type)
-        log("Send message\nTopic: " + topic + "\nMessage: " + payload + "\n\n")
-        self.mqtt_client.publish(topic, payload)
+        log("\nSend message\nTopic: " + topic + "\nMessage: " + str(payload) + "\n\n")
+        self.mqtt_client.publish(topic, str(payload))
 
     def handle_incoming_message(self, client, userdata, msg):
         message = self.validate_data(msg)
