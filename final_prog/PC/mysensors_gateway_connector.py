@@ -58,7 +58,7 @@ class GatewayConnector(object):
     def __init__(self, message_func):
         self.message_func = message_func
         self.mqtt_topic_subscribe = 'sendToPc/#'         # '/#' to subscribe on all devices connected
-        self.mqtt_topic_publish = 'getFromPc/0/0/0/0/0'     #To enable received by devices connected
+        self.mqtt_topic_publish = 'getFromPc'     #To enable received by devices connected
         self.create_mqtt_client()       #Creating mqtt_client
     
     def create_mqtt_client(self):
@@ -76,13 +76,13 @@ class GatewayConnector(object):
         client.subscribe(self.mqtt_topic_subscribe)
     
     def send_serial_message(self, table_section_id, payload, command, type, child_id=0):
-        message = '{0};{1};{2};0;{3};{4}\n'.format(
-            table_section_id, child_id, command, type, payload)
-        self.mqtt_client.publish(self.mqtt_topic_publish, message)
+        topic = '{0}/{1}/{2}/0/{3}/{4}'.format(
+            self.mqtt_topic_publish, table_section_id, child_id, command, type)
+        log("Send message\nTopic: " + topic + "\nMessage: " + payload + "\n\n")
+        self.mqtt_client.publish(topic, payload)
 
     def handle_incoming_message(self, client, userdata, msg):
-        data_line = str(msg.payload)
-        message = self.validate_data(data_line)
+        message = self.validate_data(msg)
         if message:
             if message.node_id is 0:
                 log('from gateway: ', message)
@@ -101,12 +101,16 @@ class GatewayConnector(object):
         self.mqtt_client.loop_forever()
 
     @staticmethod
-    def validate_data(data_line):
+    def validate_data(msg):
+        log("\n\nTopic: " + msg.topic + "\n Message: " + msg.payload)
+        data_line = str(msg.payload)
         data_line = data_line.decode('utf-8')
-        data_array = data_line.split(';')
+        topic = str(msg.topic)
+        data_array = topic.split('/')[1:]
+        data_array.append(data_line)
 
         # Check if data contains 6 elements and ends with \n
-        if len(data_array) is not 6 or data_line[-2:] != '\\n':
+        if len(data_array) is not 6:
             return None
 
         # Check if each data is a digit except last (which is the payload)
@@ -115,7 +119,6 @@ class GatewayConnector(object):
                 return None
 
         # Return message object
-        data_array[5] = data_array[5][:-2] + '\n'
         return MySenMessage(
             int(data_array[0]),
             int(data_array[1]),
