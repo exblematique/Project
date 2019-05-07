@@ -1,0 +1,36 @@
+{
+    "tableParts": [
+        {
+            "id": 1, 
+            "startPosition": [
+                5, 
+                4
+            ], 
+            "type": 1
+        }, 
+        {
+            "id": 2, 
+            "startPosition": [
+                0, 
+                4
+            ], 
+            "type": 1
+        }, 
+        {
+            "id": 4, 
+            "startPosition": [
+                0, 
+                0
+            ], 
+            "type": 2
+        }, 
+        {
+            "id": 5, 
+            "startPosition": [
+                2, 
+                5
+            ], 
+            "type": 1
+        }
+    ]
+}

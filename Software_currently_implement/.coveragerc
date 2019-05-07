@@ -1,0 +1,10 @@
+[run]
+branch = True
+
+omit =
+    */python2.7/*
+    */test_scripts/*
+    gui.py
+    flask_api.py
+    smart_grid_app.py
+    daemon_threads.py
