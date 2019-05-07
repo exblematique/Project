@@ -86,7 +86,7 @@
     },
     {
       "voltage": "medium",
-      "id": 1508111141,
+      "id": 695288950,
       "name": "Medium Wind Turbine",
       "type": "wind_turbine",
       "configurations": [
@@ -109,7 +109,7 @@
       ]
     },
     {
-      "id": 3846948323,
+      "id": 293470002,
       "voltage": "medium",
       "name": "Solar Farm ",
       "type": "solar_farm",
@@ -157,7 +157,7 @@
       ]
     },
     {
-      "id": 702894956,
+      "id": 4045977062,
       "voltage": null,
       "name": "Battery Storage",
       "type": "battery",

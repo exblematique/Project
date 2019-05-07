@@ -76,10 +76,18 @@ class GatewayConnector(object):
         client.subscribe(self.mqtt_topic_subscribe)
     
     def send_serial_message(self, table_section_id, payload, command, type, child_id=0):
-        topic = '{0}/{1}/{2}/0/{3}/{4}'.format(
-            self.mqtt_topic_publish, table_section_id, child_id, command, type)
-        log("\nSend message\nTopic: " + topic + "\nMessage: " + str(payload) + "\n\n")
-        self.mqtt_client.publish(topic, str(payload))
+        if table_section_id is not 255:
+            topic = '{0}/{1}/0/{2}/{3}/0/{4}'.format(
+                self.mqtt_topic_publish, table_section_id, child_id, command, type)
+            log("\nSend message\nTopic: " + topic + "\nMessage: " + str(payload) + "\n\n")
+            self.mqtt_client.publish(topic, str(payload))
+        else:
+            log("Send broadcast:")
+            log("Topic: " + '{0}/x/0/{1}/{2}/0/{3}'.format(self.mqtt_topic_publish, child_id, command, type) + " and Message: " + str(payload) + "\n")
+            for table_id in range(1,255): 
+                topic = '{0}/{1}/0/{2}/{3}/0/{4}'.format(
+                    self.mqtt_topic_publish, table_id, child_id, command, type)
+                self.mqtt_client.publish(topic, str(payload))                
 
     def handle_incoming_message(self, client, userdata, msg):
         message = self.validate_data(msg)
@@ -103,11 +111,9 @@ class GatewayConnector(object):
     @staticmethod
     def validate_data(msg):
         log("\n\nTopic: " + msg.topic + "\n Message: " + msg.payload)
-        data_line = str(msg.payload)
-        data_line = data_line.decode('utf-8')
-        topic = str(msg.topic)
-        data_array = topic.split('/')[1:]
-        data_array.append(data_line)
+        data_array = str(msg.topic).split('/')[1:]
+        del(data_array[1])
+        data_array.append(str(msg.payload))
 
         # Check if data contains 6 elements and ends with \n
         if len(data_array) is not 6:

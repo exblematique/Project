@@ -25,10 +25,10 @@
 #define MY_HOSTNAME "Boss1"
 
 /** MQTT Configuration **/
-#define MY_MQTT_PUBLISH_TOPIC_PREFIX "sendToPc"
-#define MY_MQTT_SUBSCRIBE_TOPIC_PREFIX "getFromPc"
+#define MY_MQTT_PUBLISH_TOPIC_PREFIX "sendToPc/3"
+#define MY_MQTT_SUBSCRIBE_TOPIC_PREFIX "getFromPc/3"
 #define MY_MQTT_CLIENT_ID "Boss1"
-#define MY_CONTROLLER_IP_ADDRESS 192,168,56,101
+#define MY_CONTROLLER_IP_ADDRESS 192, 168, 56, 101
 #define MY_PORT 1883
 
 /*******************************
@@ -41,7 +41,7 @@
 
 
 // Table section ID set node id between 1-254
-#define TABLE_SECTION_ID 4
+#define TABLE_SECTION_ID 3
 
 // ID of this I2C slave
 #define SLAVE_ID 1
@@ -84,10 +84,10 @@
 //#define FLOW_SEGMENT_COUNT 20
 
 // For testing with one ledstrip in IPKW
-#define FLOW_SEGMENT_COUNT 14
+#define FLOW_SEGMENT_COUNT 12
 
 // Number of LEDs in each flow_segment
-#define FLOW_SEGMENT_LENGTH 6
+#define FLOW_SEGMENT_LENGTH 5
 
 // Adjust brightness of LEDs
 #define LED_BRIGHTNESS 20 
