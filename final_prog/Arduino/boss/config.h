@@ -1,20 +1,25 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
-#define CONFIG_AUTOSTART_ARDUINO 0
-
 #define FASTLED_INTERNAL
 #include <FastLED.h>
 
 #include "rfid.h"
 #include "sensor-info.h"
 
+// MySensors radio defines
+#define MY_NODE_ID TABLE_SECTION_ID
+
+// Table section ID set node id between 1-254
+// You only need to change SETTING_WIFI
+#define TABLE_SECTION_ID int(SETTING_WIFI)
+#define SETTING_WIFI "3"
+
 // Enable the MY_DEBUG define to show debug messages
 #define MY_DEBUG
 
 /**************************************
-* Ethernet Gateway Transport Defaults
-* To use network, use the library <Ethernet.h>
+*       Ethernet Configuration        *
 ***************************************/
 #define MY_GATEWAY_MQTT_CLIENT
 #define MY_GATEWAY_ESP32
@@ -22,29 +27,24 @@
 /** Configuration of WiFi */
 #define MY_WIFI_SSID "Test"
 #define MY_WIFI_PASSWORD "qwerty1234"
-#define MY_HOSTNAME "Boss1"
+#define MY_HOSTNAME "Boss" SETTING_WIFI
 
 /** MQTT Configuration **/
-#define MY_MQTT_PUBLISH_TOPIC_PREFIX "sendToPc/3"
-#define MY_MQTT_SUBSCRIBE_TOPIC_PREFIX "getFromPc/3"
-#define MY_MQTT_CLIENT_ID "Boss1"
+#define MY_MQTT_CLIENT_ID "Boss" SETTING_WIFI
+#define MY_MQTT_PUBLISH_TOPIC_PREFIX "sendToPc/" SETTING_WIFI
+#define MY_MQTT_SUBSCRIBE_TOPIC_PREFIX "getFromPc/" SETTING_WIFI
 #define MY_CONTROLLER_IP_ADDRESS 192, 168, 56, 101
 #define MY_PORT 1883
-
-/*******************************
-* END MQTT CONFIG
-********************************/
-// MySensors radio defines
-
-#define MY_NODE_ID TABLE_SECTION_ID
+/*************************************/
 
 
+// Variables for serial communications
+#define BAUDRATE 115200
+#define TX_PIN 17
+#define RX_PIN 16
 
-// Table section ID set node id between 1-254
-#define TABLE_SECTION_ID 3
-
-// ID of this I2C slave
-#define SLAVE_ID 1
+// ESP32 helper reset pin
+#define HELPER_RST_PIN A3
 
 // Shared RFID reset pin
 #define RFID_RST_PIN A0

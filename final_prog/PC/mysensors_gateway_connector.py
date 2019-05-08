@@ -83,7 +83,7 @@ class GatewayConnector(object):
             self.mqtt_client.publish(topic, str(payload))
         else:
             log("Send broadcast:")
-            log("Topic: " + '{0}/x/0/{1}/{2}/0/{3}'.format(self.mqtt_topic_publish, child_id, command, type) + " and Message: " + str(payload) + "\n")
+            log("Topic: " + '{0}/255/0/{1}/{2}/0/{3}'.format(self.mqtt_topic_publish, child_id, command, type) + " and Message: " + str(payload) + "\n")
             for table_id in range(1,255): 
                 topic = '{0}/{1}/0/{2}/{3}/0/{4}'.format(
                     self.mqtt_topic_publish, table_id, child_id, command, type)

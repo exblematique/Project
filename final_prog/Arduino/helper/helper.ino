@@ -1,5 +1,4 @@
 #include <SPI.h>
-#include <Wire.h>
 
 #include "config.h"
 
@@ -8,15 +7,14 @@ void setup()
 	/* start SPI for RFID readers */
 	SPI.begin();
 
-	/* start I2C as master */
-	Wire.begin();
-
 	/* initialize RFID readers */
 	for (size_t i = 0; i < RFID_COUNT; i++) {
 		RFID_init(&RFIDs[i]);
 	}
-
-	Serial.begin(115200);
+ 
+  /* start Serial communications (USB then ESP32 boss */
+  Serial.begin(BAUDRATE);
+  Serial2.begin(BAUDRATE, SERIAL_8N1, RX_PIN, TX_PIN);
 	Serial.println("setup() finished");
 }
 
@@ -60,10 +58,21 @@ void handle_RFID_message(const RFID_message *msg)
 {
 	/* print RFID message */
 	RFID_message_print(msg);
-
-	/* send RFID message to I2C slave */
-	Wire.beginTransmission(SLAVE_ID);
-	Wire.write((const uint8_t *)msg, sizeof *msg);
-
-	Wire.endTransmission();
+  
+	/* send RFID message to serial */
+  if (msg->tag_present) {
+    byte buf[6];
+    buf[0] = msg->sensor_id;
+    buf[1] = (byte) msg->tag_present;
+    for (int i=0; i<4; i++){
+      buf[i+2] = (msg->tag_id >> i*8) & 255;
+    }
+    Serial2.write(buf, sizeof(buf));
+  }
+  else {
+    byte buf[2];
+    buf[0] = msg->sensor_id;
+    buf[1] = (byte) msg->tag_present;
+    Serial2.write(buf, sizeof(buf));  
+  }
 }

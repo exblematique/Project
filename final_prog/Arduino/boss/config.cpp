@@ -6,14 +6,14 @@
  * ************************************************************************************
  *        NORTH SIDE              
  *        
- *            T0                                          D8 
- *        M1       M2                                 D5       D7  
+ *            T0                                          D33 
+ *        M1       M2                                 D13       D27  
  *           \|_|/                                       \|_|/
- *      M0___/   \___3M              HELPER SIDE    D6___/   \___D6   BOSS SIDE
+ *      M0___/   \___M3              HELPER SIDE   D12___/   \___D12   BOSS SIDE
  *           \___/                                       \___/
  *           /| |\                                       /| |\
- *        M5       4M                                 D7       D5
- *            T1                                          D8
+ *        M5       M4                                D27       D13
+ *            T1                                          D33
  *            
  *        SOUTH SIDE    
  * ************************************************************************************   
@@ -22,15 +22,15 @@
  * 
  * I/O Arduino pinout boss (as seen from the front of the table):
  * 
- * M4 = D5 (boss)
- * M3 = D6 (boss)
- * M2 = D7 (boss)
- * T0 = D8 (boss)
+ * M4 = D13 (boss)
+ * M3 = D12 (boss)
+ * M2 = D27 (boss)
+ * T0 = D33 (boss)
  *
- * M1 = D5 (helper)
- * M0 = D6 (helper)
- * M5 = D7 (helper)
- * T1 = D8 (helper)
+ * M1 = D13 (helper)
+ * M0 = D12 (helper)
+ * M5 = D27 (helper)
+ * T1 = D33 (helper)
  */
 
 // initialization of table sensors and locations on the table 

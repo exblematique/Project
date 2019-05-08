@@ -18,18 +18,12 @@
 #include "config.h"
 
 #include <MySensors.h>
-#include <Wire.h>
 
 #include "ledstrip.h"
 #include "grid.h"
 #include "protocol.h"
 #include "rfid.h"
-#include "ring-buffer.h"
 #include "synced-millis.h"
-
-// Buffer for RFID message received by I2C
-volatile RingBuffer RFID_msg_buf = ring_create();
-
 
 //present tablesection to maincontroller
 void presentation() {
@@ -38,10 +32,11 @@ void presentation() {
 
 void setup()
 {
-  /* start I2C as slave */
-  Wire.begin(SLAVE_ID);
+  // start Serial
+  Serial.begin(BAUDRATE);
+  Serial2.begin(BAUDRATE, SERIAL_8N1, RX_PIN, TX_PIN);
   
-  // start SPI for RFID readers and NRF24
+  // start SPI for RFID readers
   SPI.begin();
 
   // initialize RFID readers 
@@ -54,10 +49,10 @@ void setup()
   ledstrip_setup();
 
   //Set RST pin on helper high default status
-  pinMode(A3, OUTPUT);
-  digitalWrite(A3, LOW);
+  pinMode(HELPER_RST_PIN, OUTPUT);
+  digitalWrite(HELPER_RST_PIN, LOW);
   delay(5);
-  digitalWrite(A3, HIGH);
+  digitalWrite(HELPER_RST_PIN, HIGH);
 
 } // End setup()
 
@@ -82,15 +77,18 @@ void loop()
     next_RFID = (next_RFID + 1) % RFID_COUNT;
   }
 
-  // handle an RFID message received by I2C
-  const RingBuffer *RFID_msg = (const RingBuffer*) &RFID_msg_buf;
-  if (ring_length(RFID_msg) > 0)
-  {
-    // Disable interrupts to get the RFID message from the buffer, then enable interrupts again.
+  // handle an RFID message received by serial
+  if (Serial2.available()){
     noInterrupts();
-    RFID_message RFID_msg = ring_pop((RingBuffer*) &RFID_msg_buf);
+    RFID_message RFID_msg;
+    RFID_msg.sensor_id = Serial2.read();
+    RFID_msg.tag_present = (bool) Serial2.read();
+    if (RFID_msg.tag_present){
+      for (int i=0; i<4; i++){
+        RFID_msg.tag_id = (RFID_msg.tag_id >> 8) | (Serial2.read() << 24);
+      }
+    }
     interrupts();
-
     handle_RFID_message(&RFID_msg);
   }
   ledstrip_update();
@@ -216,26 +214,6 @@ void handle_RFID_message(const RFID_message *msg)
       testReady = ledstrip_test(testReady);
     }
 } // End handle_RFID_message()
-
-// Receives RFID messages from helper by I2C
-// Interrupt routine fills RFID message per byte with a 6 byte large ring buffer
-void i2c_receive(int bytes)
-{
-  RFID_message RFID_msg;
-
-  // Read from i2c
-  uint8_t *buf = (uint8_t *) &RFID_msg;
-  for (size_t i = 0; i < sizeof RFID_msg; i++)
-  {
-    buf[i] = Wire.read();
-  }
-
-  // Update sensor ID
-  RFID_msg.sensor_id += RFID_COUNT;
-
-  // Add message to the ring buffer
-  ring_push((RingBuffer*) &RFID_msg_buf, RFID_msg);
-} // End i2c_receive()
 
 void reboot_boss_and_helper() {
   Serial.println("rebooting system");
