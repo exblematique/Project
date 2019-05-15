@@ -32,7 +32,10 @@ void presentation() {
 
 void setup()
 {
-  // start Serial
+  /* start Serials:
+   *  Serial is used to print something in the serial monitor
+   *  Serial2 is used to receive a piece of information from ESP helper
+   */
   Serial.begin(BAUDRATE);
   Serial2.begin(BAUDRATE, SERIAL_8N1, RX_PIN, TX_PIN);
   
@@ -58,39 +61,31 @@ void setup()
 
 void loop()
 {
-  // Holds value at which millis to check the RFIDs again
-  static uint32_t next_RFID_check = 0;
-  // Holds value of which RFID reader to check next
-  static uint8_t next_RFID = 0;
-
-  // Stores current millis for later use
-  uint32_t now = millis();
-
-  // Check next RFID after RFID_CHECK_DELAY (set in config.h)
-  if (now > next_RFID_check)
-  {
-    next_RFID_check = now + RFID_CHECK_DELAY;
-
-    // handle an RFID on this Arduino
-    handle_RFID(&RFIDs[next_RFID], next_RFID);
-
-    next_RFID = (next_RFID + 1) % RFID_COUNT;
+  // handle an RFID message on this ESP32
+  for (int i=0; i<RFID_COUNT; i++){
+    handle_RFID(&RFIDs[i], i);
   }
 
-  // handle an RFID message received by serial
+  /* handle an RFID message received by serial:
+   *    Receives the first byte which contain the sensor_id (config.cpp for more information)
+   *    The receives the second byte for the tag_present
+   *    The lasts bytes it's for the tag_id which is a 4-bytes value
+   */
   if (Serial2.available()){
     noInterrupts();
     RFID_message RFID_msg;
-    RFID_msg.sensor_id = Serial2.read();
+    RFID_msg.sensor_id = Serial2.read() + RFID_COUNT;
     RFID_msg.tag_present = (bool) Serial2.read();
+    
     if (RFID_msg.tag_present){
       for (int i=0; i<4; i++){
         RFID_msg.tag_id = (RFID_msg.tag_id >> 8) | (Serial2.read() << 24);
-      }
+      } 
     }
     interrupts();
     handle_RFID_message(&RFID_msg);
   }
+  
   ledstrip_update();
 } // End loop()
 
@@ -183,12 +178,10 @@ void handle_RFID(RFID *RFID, uint8_t sensor_id)
 // Processes the incoming RFID message
 void handle_RFID_message(const RFID_message *msg)
 {
-
-
-#ifdef MY_DEBUG
-  // If debugging is enabled, this prints the RFID message
-  RFID_message_print(msg);
-#endif
+  #ifdef MY_DEBUG
+    // If debugging is enabled, this prints the RFID message
+    RFID_message_print(msg);
+  #endif
 
   // report change to main controller
   const SensorInfo *sensor = &sensor_info[msg->sensor_id];

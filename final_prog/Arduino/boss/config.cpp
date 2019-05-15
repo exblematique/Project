@@ -35,14 +35,14 @@
 
 // initialization of table sensors and locations on the table 
 const SensorInfo sensor_info[] = {
-  [0] = { .type = MODULE_SENSOR,     .location = 4 }, //boss --digitalpin 5 
-  [1] = { .type = MODULE_SENSOR,     .location = 3 }, //boss --digitalpin 6
-  [2] = { .type = MODULE_SENSOR,     .location = 2 }, //boss --digitalpin 7
-  [3] = { .type = TABLE_SECTION_SENSOR, .location = 0 }, //boss --digitalpin 8
-  [4] = { .type = MODULE_SENSOR,     .location = 1 }, //helper --digitalpin 5
-  [5] = { .type = MODULE_SENSOR,     .location = 0 }, //helper --digitalpin 6
-  [6] = { .type = MODULE_SENSOR,     .location = 5 }, //helper --digitalpin 7
-  [7] = { .type = TABLE_SECTION_SENSOR, .location = 1 }, //helper --digitalpin 8
+  [0] = { .type = MODULE_SENSOR,     .location = 4 }, //boss --digitalpin 13
+  [1] = { .type = MODULE_SENSOR,     .location = 3 }, //boss --digitalpin 12
+  [2] = { .type = MODULE_SENSOR,     .location = 2 }, //boss --digitalpin 27
+  [3] = { .type = TABLE_SECTION_SENSOR, .location = 0 }, //boss --digitalpin 33
+  [4] = { .type = MODULE_SENSOR,     .location = 1 }, //helper --digitalpin 13
+  [5] = { .type = MODULE_SENSOR,     .location = 0 }, //helper --digitalpin 12
+  [6] = { .type = MODULE_SENSOR,     .location = 5 }, //helper --digitalpin 27
+  [7] = { .type = TABLE_SECTION_SENSOR, .location = 1 }, //helper --digitalpin 33
 };
 
 // initialization of RFID objects on the boss (helper RFIDs are send through I2C communication)

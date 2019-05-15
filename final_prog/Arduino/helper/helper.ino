@@ -73,6 +73,6 @@ void handle_RFID_message(const RFID_message *msg)
     byte buf[2];
     buf[0] = msg->sensor_id;
     buf[1] = (byte) msg->tag_present;
-    Serial2.write(buf, sizeof(buf));  
+    Serial2.write(buf, sizeof(buf));
   }
 }

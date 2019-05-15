@@ -3,7 +3,7 @@
 #include "rfid.h"
 
 // Prepare key - all keys are set to FFFFFFFFFFFF at chip delivery from the factory.
-  MFRC522::MIFARE_Key default_key = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
+MFRC522::MIFARE_Key default_key = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
 
 RFID RFID_create(uint8_t ss_pin, uint8_t rst_pin)
 {

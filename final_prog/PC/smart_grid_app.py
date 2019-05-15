@@ -22,7 +22,7 @@ class SmartGridApp(object):
     SmartGridApp, the point in the application where everything comes together
     """
 
-    def __init__(self):
+    def __init__(self, mqtt_broker_ip, mqtt_broker_port):
         # App start moment in millis
         self.start_time = int(round(time.time() * 1000))
 
@@ -54,7 +54,7 @@ class SmartGridApp(object):
             SYNC_DELAY, self.need_time_sync_msg)
 
         # Create and start gateway connection (threaded)
-        self.gateway_conn = GatewayConnector(self.add_message)
+        self.gateway_conn = GatewayConnector(self.add_message, mqtt_broker_ip, mqtt_broker_port)
         #start_daemon_thread(self.gateway_conn.start_serial_read, ())
         log('--------GW CONN STARTED')
 
@@ -87,8 +87,6 @@ class SmartGridApp(object):
                     delta = datetime.datetime.now() - self.smart_grid_table.last_recalculation_request_time
                     if delta.total_seconds() > 0.2:
                         self.smart_grid_table.calculate()
-                
-                time.sleep(0.02)
                 continue
 
             message = self.message_buffer.pop(0)
@@ -213,10 +211,11 @@ class SmartGridApp(object):
 
 
 if __name__ == '__main__':
-    serial_port = '/dev/ttyMySensorsGateway'
-    baudrate = 115200
+    mqtt_broker = 'localhost'
+    mqtt_port = 1883
+    if len(sys.argv) is 2:
+        mqtt_broker = sys.argv[1]
     if len(sys.argv) is 3:
-        serial_port = sys.argv[1]
-        baudrate = sys.argv[2]
-
-    SmartGridApp()
+        mqtt_broker = sys.argv[1]
+        mqtt_port = int(sys.argv[2])
+    SmartGridApp(mqtt_broker, mqtt_port)

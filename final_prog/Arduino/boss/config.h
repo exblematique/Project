@@ -1,6 +1,18 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
+/* ---------------To setup table ------------------
+ *  You need change only this file
+ *  With the following variables:  
+ */
+#define TABLE_ID "3"
+#define SSID_WIFI "Test"
+#define PASSWORD_WIFI "qwerty1234"
+#define MQTT_SERVER_IP 192, 168, 56, 101
+#define MQTT_SERVER_PORT 1883         //The default port is 1883
+/* ----------- The setup is finished -------------*/
+
+
 #define FASTLED_INTERNAL
 #include <FastLED.h>
 
@@ -11,9 +23,9 @@
 #define MY_NODE_ID TABLE_SECTION_ID
 
 // Table section ID set node id between 1-254
-// You only need to change SETTING_WIFI
-#define TABLE_SECTION_ID int(SETTING_WIFI)
-#define SETTING_WIFI "3"
+// You only need to change TABLE_ID
+#define TABLE_SECTION_ID int(TABLE_ID)
+
 
 // Enable the MY_DEBUG define to show debug messages
 #define MY_DEBUG
@@ -25,16 +37,16 @@
 #define MY_GATEWAY_ESP32
 
 /** Configuration of WiFi */
-#define MY_WIFI_SSID "Test"
-#define MY_WIFI_PASSWORD "qwerty1234"
-#define MY_HOSTNAME "Boss" SETTING_WIFI
+#define MY_WIFI_SSID SSID_WIFI
+#define MY_WIFI_PASSWORD PASSWORD_WIFI
+#define MY_HOSTNAME "Boss" TABLE_ID
 
 /** MQTT Configuration **/
-#define MY_MQTT_CLIENT_ID "Boss" SETTING_WIFI
-#define MY_MQTT_PUBLISH_TOPIC_PREFIX "sendToPc/" SETTING_WIFI
-#define MY_MQTT_SUBSCRIBE_TOPIC_PREFIX "getFromPc/" SETTING_WIFI
-#define MY_CONTROLLER_IP_ADDRESS 192, 168, 56, 101
-#define MY_PORT 1883
+#define MY_MQTT_CLIENT_ID "Boss" TABLE_ID
+#define MY_MQTT_PUBLISH_TOPIC_PREFIX "sendToPc/" TABLE_ID
+#define MY_MQTT_SUBSCRIBE_TOPIC_PREFIX "getFromPc/" TABLE_ID
+#define MY_CONTROLLER_IP_ADDRESS MQTT_SERVER_IP
+#define MY_PORT MQTT_SERVER_PORT
 /*************************************/
 
 
@@ -81,9 +93,6 @@
 //#define LEDSTRIP_TYPE_WITHOUT_CLOCK NEOPIXEL
 
 // Number of flow_segments
-//#define FLOW_SEGMENT_COUNT 20
-
-// For testing with one ledstrip in IPKW
 #define FLOW_SEGMENT_COUNT 12
 
 // Number of LEDs in each flow_segment

@@ -55,8 +55,10 @@ class MySenMessage(object):
 
 class GatewayConnector(object):
 
-    def __init__(self, message_func):
+    def __init__(self, message_func, mqtt_broker_ip, mqtt_broker_port):
         self.message_func = message_func
+        self.mqtt_ip = mqtt_broker_ip
+        self.mqtt_port = mqtt_broker_port
         self.mqtt_topic_subscribe = 'sendToPc/#'         # '/#' to subscribe on all devices connected
         self.mqtt_topic_publish = 'getFromPc'     #To enable received by devices connected
         self.create_mqtt_client()       #Creating mqtt_client
@@ -66,7 +68,7 @@ class GatewayConnector(object):
         self.mqtt_client = mqtt.Client()
         self.mqtt_client.on_connect = self.on_connect
         self.mqtt_client.on_message = self.handle_incoming_message
-        self.mqtt_client.connect('localhost', 1883)
+        self.mqtt_client.connect(self.mqtt_ip, self.mqtt_port)
         self.mqtt_client.loop_start()
     
     def on_connect(self, client, userdata, flags, rc):
@@ -76,6 +78,10 @@ class GatewayConnector(object):
         client.subscribe(self.mqtt_topic_subscribe)
     
     def send_serial_message(self, table_section_id, payload, command, type, child_id=0):
+        ''' This function check the destination of the message:
+            - If the message is not send through broadcast (255), the message is send
+            - Else the message is send to each table_id between 1 and 254
+        '''
         if table_section_id is not 255:
             topic = '{0}/{1}/0/{2}/{3}/0/{4}'.format(
                 self.mqtt_topic_publish, table_section_id, child_id, command, type)
@@ -144,6 +150,5 @@ if __name__ == "__main__":
     def msg_func(msg):
         log(msg)
 
-
-    gw_conn = GatewayConnector(msg_func)
+    gw_conn = GatewayConnector(msg_func, 'localhost', 1883)
     gw_conn.start_serial_read()

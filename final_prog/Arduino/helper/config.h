@@ -10,7 +10,7 @@
 
 // RFID data pins 
 #define RFID0_SDA_PIN 13
-#define RFID1_SDA_PIN 12 //12
+#define RFID1_SDA_PIN 12
 #define RFID2_SDA_PIN 27
 #define RFID3_SDA_PIN 33
 
